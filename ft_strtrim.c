@@ -6,7 +6,7 @@
 /*   By: tjolivea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 05:20:54 by tjolivea          #+#    #+#             */
-/*   Updated: 2021/11/04 05:32:23 by tjolivea         ###   ########lyon.fr   */
+/*   Updated: 2021/11/04 23:06:55 by tjolivea         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	start;
 	size_t	end;
 
+	if (!s1)
+		return (0);
 	start = 0;
 	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;

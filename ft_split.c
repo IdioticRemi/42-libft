@@ -6,7 +6,7 @@
 /*   By: tjolivea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 05:43:22 by tjolivea          #+#    #+#             */
-/*   Updated: 2021/11/04 06:39:22 by tjolivea         ###   ########lyon.fr   */
+/*   Updated: 2021/11/04 23:05:32 by tjolivea         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ char	**ft_split(char const *s, char c)
 	int		wc;
 	char	**arr;
 
+	if (!s)
+		return (0);
 	wc = ft_wordcount(s, c);
 	arr = ft_calloc(wc + 1, sizeof(char *));
 	if (!arr)

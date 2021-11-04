@@ -1,9 +1,10 @@
 *.out
 *.sh
 test
-tester
 .DS_Store
 .swp
 *.o
 .idea
 *.pdf
+*.so
+*.a
