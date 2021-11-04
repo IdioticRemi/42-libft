@@ -6,11 +6,18 @@
 /*   By: tjolivea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 05:43:22 by tjolivea          #+#    #+#             */
-/*   Updated: 2021/11/04 23:05:32 by tjolivea         ###   ########lyon.fr   */
+/*   Updated: 2021/11/04 23:32:05 by tjolivea         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	ft_free_all(char **arr, int i)
+{
+	while (i > 0)
+		free(arr[i--]);
+	free(arr);
+}
 
 static int	ft_wordcount(char const *s, char c)
 {
@@ -66,9 +73,7 @@ char	**ft_split(char const *s, char c)
 		arr[i] = ft_create_word(s, c);
 		if (!arr[i])
 		{
-			while (i > 0)
-				free(arr[i--]);
-			free(arr);
+			ft_free_all(arr, i);
 			return (0);
 		}
 		s = s + ft_strlen(arr[i]);
