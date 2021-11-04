@@ -37,20 +37,37 @@ SRCS	= \
     ft_striteri.c
 OBJS	= $(SRCS:.c=.o)
 
+B_SRCS	= \
+	ft_lstnew.c \
+	ft_lstadd_front.c \
+	ft_lstsize.c \
+	ft_lstlast.c \
+	ft_lstadd_back.c \
+	ft_lstdelone.c \
+	ft_lstclear.c \
+	ft_lstiter.c \
+	ft_lstmap.c
+B_OBJS	= $(B_SRCS:.c=.o)
+
 CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra
 
-$(NAME):
-	$(CC) $(CFLAGS) -c $(SRCS) -I ./includes
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
-
 all: $(NAME)
 
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+	ranlib $(NAME)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(B_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
+
+bonus: $(NAME) $(OBJS) $(B_OBJS)
+	ar rcs $(NAME) $(OBJS) $(B_OBJS)
 
 re: fclean all
