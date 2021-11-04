@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjolivea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 13:46:34 by tjolivea          #+#    #+#             */
-/*   Updated: 2021/11/03 18:36:17 by tjolivea         ###   ########lyon.fr   */
+/*   Created: 2021/11/03 19:20:50 by tjolivea          #+#    #+#             */
+/*   Updated: 2021/11/03 19:36:40 by tjolivea         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	while (str[i])
+	j = 0;
+	if (!*little)
+		return ((char *) big);
+	while (big[i] && i + j < len)
+	{
+		if (big[i + j] == little[j])
+		{
+			if (!little[++j])
+				return ((char *)big + i);
+			continue ;
+		}
+		j = 0;
 		i++;
-	return (i);
+	}
+	return (0);
 }

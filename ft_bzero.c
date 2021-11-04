@@ -6,13 +6,13 @@
 /*   By: tjolivea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:11:48 by tjolivea          #+#    #+#             */
-/*   Updated: 2021/11/02 14:54:00 by tjolivea         ###   ########lyon.fr   */
+/*   Updated: 2021/11/03 18:36:17 by tjolivea         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(t_ptr ptr, t_uint count)
+void	ft_bzero(void *ptr, size_t n)
 {
-	ft_memset(ptr, 0, count);
+	ft_memset(ptr, 0, n);
 }

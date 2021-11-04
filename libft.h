@@ -6,28 +6,38 @@
 /*   By: tjolivea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 13:13:25 by tjolivea          #+#    #+#             */
-/*   Updated: 2021/11/02 15:52:21 by tjolivea         ###   ########lyon.fr   */
+/*   Updated: 2021/11/03 20:04:43 by tjolivea         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-typedef char*			t_str;
-typedef const char*		t_cstr;
-typedef void*			t_ptr;
-typedef const void*		t_cptr;
-typedef unsigned int	t_uint;
+# include <stddef.h>
+# include <stdlib.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
-t_uint	ft_strlen(t_cstr str);
-t_ptr	ft_memset(t_ptr pointer, int value, t_uint count);
-void	ft_bzero(t_ptr ptr, t_uint count);
-t_ptr	ft_memcpy(t_ptr dst, t_cptr src, t_uint n);
-t_ptr	ft_memmove(t_ptr dst, t_cptr src, t_uint len);
+size_t	ft_strlen(const char *str);
+void	*ft_memset(void *s, int c, size_t n);
+void	ft_bzero(void *s, size_t n);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_memmove(void *dst, const void *src, size_t n);
+size_t	ft_strlcpy(char *dst, const char *src, size_t n);
+size_t	ft_strlcat(char *dst, const char *src, size_t n);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strrchr(const char *s, int c);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	*ft_memchr(const void *s, int c, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
+char	*ft_strnstr(const char *big, const char *little, size_t len);
+int		ft_atoi(const char *nptr);
+char	*ft_strdup(char *src);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif

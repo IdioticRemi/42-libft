@@ -6,20 +6,20 @@
 /*   By: tjolivea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 13:54:01 by tjolivea          #+#    #+#             */
-/*   Updated: 2021/11/02 15:08:41 by tjolivea         ###   ########lyon.fr   */
+/*   Updated: 2021/11/03 18:37:24 by tjolivea         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_ptr	ft_memset(t_ptr ptr, int value, t_uint count)
+void	*ft_memset(void *ptr, int value, size_t n)
 {
-	t_uint	i;
+	size_t			i;
 	unsigned char	*src;
 
 	i = 0;
-	src = (unsigned char *) ptr;
-	while (i < count)
+	src = (unsigned char *)ptr;
+	while (i < n)
 		src[i++] = value;
 	return (ptr);
 }
