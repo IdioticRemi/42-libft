@@ -37,25 +37,47 @@ RN		= ranlib
 
 CFLAGS	= -Wall -Werror -Wextra
 
+# FORMAT
+
+FG_MAGE	= \033[0;35m
+FG_CYAN	= \033[0;36m
+FG_WHIT	= \033[0;37m
+FG_GREE	= \033[0;32m
+
+C_RESET	= \033[0m
+
+C_BUILD	= $(FG_WHIT)     [ BUILD ]$(RESET)
+C_BIN	= $(FG_CYAN)%20s$(RESET)
+C_BOUT	= $(FG_CYAN)%20s$(RESET)
+C_AR	= $(FG_WHIT)        [ AR ]$(RESET) $(FG_MAGE)$(NAME) has been packed.$(RESET)
+C_AR_BO	= $(FG_WHIT)        [ AR ]$(RESET) $(FG_MAGE)$(NAME) has been packed with bonuses.$(RESET)
+C_CLEAN	= $(FG_WHIT)     [ CLEAN ]$(RESET) $(FG_GREE)Every .o has been removed.$(RESET)
+C_FCLEA	= $(FG_WHIT)    [ FCLEAN ]$(RESET) $(FG_GREE)$(NAME) was removed.$(RESET)
+
 # RULES
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c libft.h
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "$(C_BUILD)$(C_BIN)$(C_BOUT)\n" "$<" "$@"
 
 $(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
-	$(RN) $(NAME)
+	@$(AR) $(NAME) $(OBJS)
+	@$(RN) $(NAME)
+	@printf "$(C_AR)\n"
 
-bonus: $(B_OBJS)
-	$(AR) $(NAME) $(B_OBJS)
-	$(RN) $(NAME)
+bonus: $(NAME) $(B_OBJS)
+	@$(AR) $(NAME) $(OBJS) $(B_OBJS)
+	@$(RN) $(NAME)
+	@printf "$(C_AR_BO)\n"
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS) $(B_OBJS)
+	@$(RM) $(OBJS) $(B_OBJS)
+	@printf "$(C_CLEAN)\n"
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@printf "$(C_FCLEA)\n"
 
 re: fclean all
