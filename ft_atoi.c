@@ -21,7 +21,7 @@ int	ft_atoi(const char *nptr)
 	sign = 1;
 	while (*nptr && ((*nptr >= 9 && *nptr <= 13) || *nptr == ' '))
 		nptr++;
-	if (!ft_isdigit(*nptr))
+	if (*nptr && !ft_isdigit(*nptr))
 	{
 		sign *= ((*nptr == '+') * 1) + ((*nptr == '-') * -1);
 		nptr++;
