@@ -25,12 +25,12 @@ OBJS	= $(SRCS:.c=.o)
 
 # COMMANDS
 
-CC		= gcc
+CC		= clang
 RM		= rm -f
 AR		= ar rc
 RN		= ranlib
 
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -O3
 
 # FORMAT
 
