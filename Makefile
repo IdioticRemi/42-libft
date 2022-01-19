@@ -56,10 +56,10 @@ $(NAME): $(OBJS)
 	@printf " [$(words $(OBJS))]\n"
 	@printf "$(C_AR)"
 
+all: log $(NAME)
+
 log:
 	@printf "$(C_BUILD)"
-
-all: log $(NAME)
 
 clean:
 	@$(RM) $(OBJS)
